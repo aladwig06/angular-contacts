@@ -2,8 +2,8 @@
 
 /* Controllers */
 
-function contactsController($scope){
-  
+function contactsController($scope, $location, $dialog){
+
     $.ajax({
         type: "GET",
         //dataType: "JSONP",
@@ -14,15 +14,48 @@ function contactsController($scope){
             var myData = angular.fromJson(data);
             $scope.$apply(function(){
                 $scope.contacts = myData;
-                console.log('data' + data);
+                
             });
         },
         error: function(data){
              console.log('error' + data);
         }
     
-   });   
-    
+   });
+   
+         $scope.opts = {
+                backdrop: true,
+                keyboard: true,
+                backdropClick: true,
+                templateUrl: 'partials/new-contact-form.html',
+                controller: 'newContactController'
+            };
+            
+            $scope.openDialog = function(){
+                console.log("openDialog called");
+                var d = $dialog.dialog($scope.opts);
+                d.open().then(function(result){
+                   $.ajax({
+                        type: "GET",
+                        //dataType: "JSONP",
+                        url: "http://localhost:8000/contacts",
+                        //jsopCallback: 'callback',
+                        //crossDomain: true,
+                        success: function(data){
+                            var myData = angular.fromJson(data);
+                            $scope.$apply(function(){
+                                $scope.contacts = myData;
+                                
+                            });
+                        },
+                        error: function(data){
+                             console.log('error' + data);
+                        }
+                    
+                        });
+                        });
+            };
+                            
 }
 
 function contactDetailController($scope, $location, $routeParams){
@@ -65,9 +98,9 @@ function contactDetailController($scope, $location, $routeParams){
     } 
 }
 
-function newContactController($scope, $location){
-
-    $scope.addNewContact = function(newContact){
+function newContactController($scope, $location, dialog){
+    //was $scope.addNewContact
+    $scope.close = function(newContact){
         console.log('adding new contact ' + $scope.newContact);
         $.ajax({
             type: "POST",
@@ -76,6 +109,7 @@ function newContactController($scope, $location){
             success: function(data){
                 
                 $scope.$apply(function(){
+                   dialog.close();
                     $location.path('/contacts');    
                 });
             },
@@ -88,5 +122,7 @@ function newContactController($scope, $location){
             
         });
     }
-
+    
+    
 }
+

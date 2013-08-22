@@ -1,8 +1,13 @@
-<p>Name: {{ contact.first_name }} {{ contact.last_name }}</p>
-<p>Phone Number: {{ contact.phone_number }}</p>
 
-<button ng-click="removeContact()">Delete Contact</button>
-{{ response }}
+<div class="container-fluid contacts_list">
+    <ul class="menu">
+        <li><a href="#/contacts">Contacts</a></li>
+    </ul>
+    <p>Name: {{ contact.first_name }} {{ contact.last_name }}</p>
+    <p>Phone Number: {{ contact.phone_number }}</p>
+    
+    <button class="btn btn-primary" ng-click="removeContact()">Delete Contact</button>
+</div>
 
     
 
