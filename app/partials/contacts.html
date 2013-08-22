@@ -1,0 +1,20 @@
+<div class="container-fluid contacts_list">
+    
+
+  <input ng-model="search_input" type="text" class="input-medium search-query" text="Search">
+<br><br>
+
+<ul class="thumbnails">
+    <li class="span3" ng-repeat="contact in contacts | filter:search_input">
+        <div class="thumbnail name_tiles">
+            <a class="name_tiles_text" href="#/contacts/{{ contact._id }}">{{ contact.first_name }} {{ contact.last_name }}</a>
+        </div>
+    </li>
+    
+</ul>
+
+
+
+
+
+</div>

@@ -4,25 +4,35 @@
   <meta charset="utf-8">
   <title>My AngularJS App</title>
   <link rel="stylesheet" href="css/app.css"/>
+  <link rel="stylesheet" href="css/bootstrap.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ 
 </head>
 <body>
+  
+  <div class="navbar navbar_upper">
+    <h1 class="title">Andrew's Awesome Contact List<h1>
+  </div><!--navbar_upper-->
   <ul class="menu">
-    <li><a href="#/view1">view1</a></li>
-    <li><a href="#/view2">view2</a></li>
+    <li><a href="#/contacts">Contacts</a></li>
+    <li><a href="#/new-contact">Create New Contact</a></li>
+
   </ul>
 
-  <div ng-view></div>
+  <div ng-view ></div>
 
-  <div>Angular seed app: v<span app-version></span></div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
   -->
+  
   <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular/angular-resource.js"></script>
   <script src="js/app.js"></script>
   <script src="js/services.js"></script>
   <script src="js/controllers.js"></script>
   <script src="js/filters.js"></script>
   <script src="js/directives.js"></script>
+
 </body>
 </html>
