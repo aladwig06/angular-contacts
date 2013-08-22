@@ -3,10 +3,12 @@
     <ul class="menu">
         <li><a href="#/contacts">Contacts</a></li>
     </ul>
+    <div class="contact_info">
     <p>Name: {{ contact.first_name }} {{ contact.last_name }}</p>
     <p>Phone Number: {{ contact.phone_number }}</p>
-    
+    <br>
     <button class="btn btn-primary" ng-click="removeContact()">Delete Contact</button>
+    </div>
 </div>
 
     
